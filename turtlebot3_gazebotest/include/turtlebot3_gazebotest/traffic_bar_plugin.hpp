@@ -14,8 +14,8 @@
 //
 // Author: Hyungyu Kim
 
-#ifndef TURTLEBOT3_GAZEBO__TRAFFIC_BAR_PLUGIN_HPP_
-#define TURTLEBOT3_GAZEBO__TRAFFIC_BAR_PLUGIN_HPP_
+#ifndef TURTLEBOT3_GAZEBOTEST__TRAFFIC_BAR_PLUGIN_HPP_
+#define TURTLEBOT3_GAZEBOTEST__TRAFFIC_BAR_PLUGIN_HPP_
 
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>

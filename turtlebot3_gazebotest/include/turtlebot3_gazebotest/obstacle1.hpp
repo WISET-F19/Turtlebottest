@@ -14,8 +14,8 @@
 //
 // Author: Ryan Shim
 
-#ifndef TURTLEBOT3_GAZEBO__OBSTACLE1_HPP_
-#define TURTLEBOT3_GAZEBO__OBSTACLE1_HPP_
+#ifndef TURTLEBOT3_GAZEBOTEST__OBSTACLE1_HPP_
+#define TURTLEBOT3_GAZEBOTEST__OBSTACLE1_HPP_
 
 #include <ignition/math.hh>
 #include <gazebo/common/common.hh>
