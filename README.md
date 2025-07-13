@@ -6,4 +6,7 @@
 * git clone -b main https://github.com/WISET-F19/Turtlebottest.git
 * cd ~/turtlebot3_ws && colcon build --symlink-install
 
+새로 코드 업데이트 된 뒤 패키지 없뎃 하고 싶을때:
+* cd Turtlebottest/
+* git pull origin main
 
