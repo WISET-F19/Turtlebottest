@@ -10,3 +10,7 @@
 * cd Turtlebottest/
 * git pull origin main
 
+시뮬레이션 돌리고 싶을때 예시 코드:
+* ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+* ros2 run turtlebot3_gazebotest turtlebot3_drivetest
+
