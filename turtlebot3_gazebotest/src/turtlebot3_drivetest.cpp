@@ -140,6 +140,8 @@ void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr
       scan_data_[i] = msg->ranges.at(scan_indices[i]);
     }
   }
+
+  RCLCPP_INFO(this->get_logger(), "scan_data_[CENTER]: %.2f", scan_data_[CENTER]);
 }
 
 void Turtlebot3Drive::update_cmd_vel(double linear, double angular)
