@@ -158,8 +158,8 @@ void Turtlebot3Drive::update_callback()
 {
   static uint8_t turtlebot3_state_num = 0;
   double escape_range = 30.0 * DEG2RAD;
-  double check_forward_dist = 0.15;
-  double check_side_dist = 0.15;
+  double check_forward_dist = 0.13;
+  double check_side_dist = 0.13;
 
   switch (turtlebot3_state_num)
   {
