@@ -35,10 +35,10 @@ find_package(tf2 REQUIRED)
 #   ${GAZEBO_LIBRARY_DIRS}
 # )
 
-# include_directories(
-#   include
-#   ${GAZEBO_INCLUDE_DIRS}
-# )
+include_directories(
+  include
+  # ${GAZEBO_INCLUDE_DIRS}
+)
 
 set(dependencies
   "geometry_msgs"
