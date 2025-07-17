@@ -82,19 +82,46 @@ void Turtlebot3Drive::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg
   robot_pose_ = yaw;
 }
 
+// void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
+// {
+//   uint16_t scan_angle[3] = {0, 30, 330};
+
+//   for (int num = 0; num < 3; num++)
+//   {
+//     if (std::isinf(msg->ranges.at(scan_angle[num])))
+//     {
+//       scan_data_[num] = msg->range_max;
+//     }
+//     else
+//     {
+//       scan_data_[num] = msg->ranges.at(scan_angle[num]);
+//     }
+//   }
+// }
+
 void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
 {
-  uint16_t scan_angle[3] = {0, 30, 330};
+  size_t range_size = msg->ranges.size();
 
-  for (int num = 0; num < 3; num++)
+  uint16_t right_index = 0;
+  uint16_t center_index = range_size / 2;
+  uint16_t left_index = range_size - 1;
+
+  uint16_t scan_indices[3] = {right_index, center_index, left_index};
+
+  for (int i = 0; i < 3; i++)
   {
-    if (std::isinf(msg->ranges.at(scan_angle[num])))
+    if (scan_indices[i] >= range_size)
     {
-      scan_data_[num] = msg->range_max;
+      scan_data_[i] = msg->range_max;
+    }
+    else if (std::isinf(msg->ranges.at(scan_indices[i])))
+    {
+      scan_data_[i] = msg->range_max;
     }
     else
     {
-      scan_data_[num] = msg->ranges.at(scan_angle[num]);
+      scan_data_[i] = msg->ranges.at(scan_indices[i]);
     }
   }
 }
