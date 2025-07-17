@@ -103,11 +103,27 @@ void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr
 {
   size_t range_size = msg->ranges.size();
 
+  float min_range = msg->range_max; // 가장 먼 값으로 초기화
+  size_t min_index = 0;             // 가장 가까운 인덱스 초기화
+
+  // 가장 가까운 거리 계산
+  for (size_t i = 0; i < range_size; ++i)
+  {
+    float r = msg->ranges[i];
+    if (!std::isinf(r) && !std::isnan(r) && r < min_range)
+    {
+      min_range = r;
+      min_index = i;
+    }
+  }
+
   uint16_t right_index = 0;
   uint16_t center_index = range_size / 2;
   uint16_t left_index = range_size - 1;
 
   uint16_t scan_indices[3] = {right_index, center_index, left_index};
+
+  RCLCPP_INFO(this->get_logger(), "가장 가까운 장애물: %.2f m (인덱스: %zu)", min_range, min_index);
 
   for (int i = 0; i < 3; i++)
   {
@@ -142,8 +158,8 @@ void Turtlebot3Drive::update_callback()
 {
   static uint8_t turtlebot3_state_num = 0;
   double escape_range = 30.0 * DEG2RAD;
-  double check_forward_dist = 0.7;
-  double check_side_dist = 0.6;
+  double check_forward_dist = 0.15;
+  double check_side_dist = 0.15;
 
   switch (turtlebot3_state_num)
   {
