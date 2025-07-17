@@ -20,8 +20,8 @@ endif()
 # Find ament packages and libraries for ament and system dependencies
 ################################################################################
 find_package(ament_cmake REQUIRED)
-find_package(gazebo REQUIRED)
-find_package(gazebo_ros_pkgs REQUIRED)
+# find_package(gazebo REQUIRED)
+# find_package(gazebo_ros_pkgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -31,14 +31,14 @@ find_package(tf2 REQUIRED)
 ################################################################################
 # Build
 ################################################################################
-link_directories(
-  ${GAZEBO_LIBRARY_DIRS}
-)
+# link_directories(
+#   ${GAZEBO_LIBRARY_DIRS}
+# )
 
-include_directories(
-  include
-  ${GAZEBO_INCLUDE_DIRS}
-)
+# include_directories(
+#   include
+#   ${GAZEBO_INCLUDE_DIRS}
+# )
 
 set(dependencies
   "geometry_msgs"
@@ -53,20 +53,20 @@ set(EXEC_NAME "turtlebot3_drivetest")
 add_executable(${EXEC_NAME} src/turtlebot3_drivetest.cpp)
 ament_target_dependencies(${EXEC_NAME} ${dependencies})
 
-add_library(traffic_light_plugin SHARED src/traffic_light_plugin.cpp)
-target_link_libraries(traffic_light_plugin ${GAZEBO_LIBRARIES})
+# add_library(traffic_light_plugin SHARED src/traffic_light_plugin.cpp)
+# target_link_libraries(traffic_light_plugin ${GAZEBO_LIBRARIES})
 
-add_library(traffic_bar_plugin SHARED src/traffic_bar_plugin.cpp)
-target_link_libraries(traffic_bar_plugin ${GAZEBO_LIBRARIES})
+# add_library(traffic_bar_plugin SHARED src/traffic_bar_plugin.cpp)
+# target_link_libraries(traffic_bar_plugin ${GAZEBO_LIBRARIES})
 
-add_library(obstacle1 SHARED src/obstacle1.cpp)
-target_link_libraries(obstacle1 ${GAZEBO_LIBRARIES})
+# add_library(obstacle1 SHARED src/obstacle1.cpp)
+# target_link_libraries(obstacle1 ${GAZEBO_LIBRARIES})
 
-add_library(obstacle2 SHARED src/obstacle2.cpp)
-target_link_libraries(obstacle2 ${GAZEBO_LIBRARIES})
+# add_library(obstacle2 SHARED src/obstacle2.cpp)
+# target_link_libraries(obstacle2 ${GAZEBO_LIBRARIES})
 
-add_library(obstacles SHARED src/obstacles.cpp)
-target_link_libraries(obstacles ${GAZEBO_LIBRARIES})
+# add_library(obstacles SHARED src/obstacles.cpp)
+# target_link_libraries(obstacles ${GAZEBO_LIBRARIES})
 
 ################################################################################
 # Install
@@ -87,7 +87,7 @@ install(DIRECTORY include/
 # Macro for ament package
 ################################################################################
 ament_export_include_directories(include)
-ament_export_dependencies(gazebo_ros_pkgs)
+# ament_export_dependencies(gazebo_ros_pkgs)
 ament_export_dependencies(geometry_msgs)
 ament_export_dependencies(nav_msgs)
 ament_export_dependencies(rclcpp)
