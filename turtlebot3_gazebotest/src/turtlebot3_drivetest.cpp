@@ -227,7 +227,7 @@ void Turtlebot3Drive::update_callback()
       turtlebot3_state_num = TB3_RIGHT_TURN; //오른쪽 회전 시켜(2)
     }
 
-    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
+    // RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
 
   case TB3_DRIVE_FORWARD: //상태 값이 1임
@@ -253,7 +253,7 @@ void Turtlebot3Drive::update_callback()
     {
       update_cmd_vel(0.0, -1 * ANGULAR_VELOCITY); //선 속도는 0, 방향만 업뎃 ->움직이지 않고 회전만 (이게 제자리에서 돌게 만든 원인일 듯)
     }
-    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
+    // RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
 
   case TB3_LEFT_TURN: //상태 값 3(왼쪽 회전)
@@ -266,12 +266,12 @@ void Turtlebot3Drive::update_callback()
     {
       update_cmd_vel(0.0, ANGULAR_VELOCITY); //선 속도는 0 고정 -> 회전 각도만 주어짐
     }
-    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
+    // RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
 
   default:
     turtlebot3_state_num = GET_TB3_DIRECTION; //0으로 초기화
-    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
+    // RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
   }
 }
