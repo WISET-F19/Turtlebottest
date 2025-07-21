@@ -184,8 +184,8 @@ void Turtlebot3Drive::update_callback()
 {
   static uint8_t turtlebot3_state_num = 0;
   double escape_range = 30.0 * DEG2RAD; //현재로선 여기가 의심됨 (30도)
-  double check_forward_dist = 0.4; //정면에서 장애물 감지 임계값
-  double check_side_dist = 0.4; //좌우 측면에서의 장애물 감지 임계값
+  double check_forward_dist = 0.2; //정면에서 장애물 감지 임계값
+  double check_side_dist = 0.2; //좌우 측면에서의 장애물 감지 임계값
 
   // #define CENTER 0 -> hpp에서 이미 정의해놓음
   // #define LEFT 1
