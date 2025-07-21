@@ -14,3 +14,12 @@
 * ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 * ros2 run turtlebot3_gazebotest turtlebot3_drivetest
 
+실제 상황에서 돌리고 싶을 때:
+* ros2 launch turtlebot3_bringup robot.launch.py
+* ros2 run turtlebot3_gazebotest turtlebot3_drivetest
+
+깃허브 통해서 코드 업뎃 후 패키지 업뎃 하고 싶을 때 - 터틀봇 버전:
+* cd ~/turtlebot3_ws/src/Turtlebottest/
+* git pull origin main
+* colcon build --packages-select turtlebot3_gazebotest
+* source install/setup.bash
