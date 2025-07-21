@@ -196,6 +196,10 @@ void Turtlebot3Drive::update_callback()
   // #define TB3_RIGHT_TURN 2
   // #define TB3_LEFT_TURN 3
 
+  RCLCPP_INFO(this->get_logger(),
+  "scan_data: C=%.2f, L=%.2f, R=%.2f",
+  scan_data_[CENTER], scan_data_[LEFT], scan_data_[RIGHT]);
+
   switch (turtlebot3_state_num)
   {
   case GET_TB3_DIRECTION: //방향 판단 (현재 상타개 0일때)
