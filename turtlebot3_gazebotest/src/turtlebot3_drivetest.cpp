@@ -230,7 +230,7 @@ void Turtlebot3Drive::update_callback()
     break;
 
   case TB3_RIGHT_TURN: //상태 값 2(오른쪽 회전)
-    RCLCPP_INFO(this->get_logger(), "차이 값: %.2f", fabs(prev_robot_pose_ - robot_pose_));
+    // RCLCPP_INFO(this->get_logger(), "차이 값: %.2f", fabs(prev_robot_pose_ - robot_pose_));
     if (fabs(prev_robot_pose_ - robot_pose_) >= escape_range) //절댓값(이전-현재) 이 30 라디안 보다 크거나 같을 때
     {
       turtlebot3_state_num = GET_TB3_DIRECTION; //0으로 초기화
