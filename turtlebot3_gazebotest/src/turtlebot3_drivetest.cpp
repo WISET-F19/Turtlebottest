@@ -80,7 +80,7 @@ void Turtlebot3Drive::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg
   m.getRPY(roll, pitch, yaw);
 
   robot_pose_ = yaw;
-  RCLCPP_INFO(this->get_logger(), "현재 robot_pose_: %.2f rad", robot_pose_);
+  // RCLCPP_INFO(this->get_logger(), "현재 robot_pose_: %.2f rad", robot_pose_);
 }
 
 // void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
@@ -234,7 +234,7 @@ void Turtlebot3Drive::update_callback()
     update_cmd_vel(LINEAR_VELOCITY, 0.0); //선 속도 값 업뎃 해주기 (0.3 고정)
     forward_count++;
 
-    if (forward_count >= 20)  // 약 1초 유지 (루프 주기가 0.05초라면)
+    if (forward_count >= 10)  // 약 0.5초 유지 (루프 주기가 0.05초라면)
     {
       forward_count = 0;
       turtlebot3_state_num = GET_TB3_DIRECTION;
