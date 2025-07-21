@@ -78,8 +78,9 @@ void Turtlebot3Drive::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg
   tf2::Matrix3x3 m(q);
   double roll, pitch, yaw;
   m.getRPY(roll, pitch, yaw);
-  RCLCPP_INFO(this->get_logger(), "현재 robot_pose_: %.2f rad", robot_pose_);
+
   robot_pose_ = yaw;
+  RCLCPP_INFO(this->get_logger(), "현재 robot_pose_: %.2f rad", robot_pose_);
 }
 
 // void Turtlebot3Drive::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
