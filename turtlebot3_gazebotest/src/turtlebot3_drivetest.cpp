@@ -183,7 +183,7 @@ void Turtlebot3Drive::update_cmd_vel(double linear, double angular)
 void Turtlebot3Drive::update_callback()
 {
   static uint8_t turtlebot3_state_num = 0;
-  double escape_range = 30.0 * DEG2RAD; //현재로선 여기가 의심됨 (30라디안)
+  double escape_range = 30.0 * DEG2RAD; //현재로선 여기가 의심됨 (30도)
   double check_forward_dist = 0.13; //정면에서 장애물 감지 임계값
   double check_side_dist = 0.13; //좌우 측면에서의 장애물 감지 임계값
 
@@ -196,13 +196,12 @@ void Turtlebot3Drive::update_callback()
   // #define TB3_RIGHT_TURN 2
   // #define TB3_LEFT_TURN 3
 
-  RCLCPP_INFO(this->get_logger(),
-  "scan_data: C=%.2f, L=%.2f, R=%.2f",
-  scan_data_[CENTER], scan_data_[LEFT], scan_data_[RIGHT]);
-
   switch (turtlebot3_state_num)
   {
   case GET_TB3_DIRECTION: //방향 판단 (현재 상타개 0일때)
+    RCLCPP_INFO(this->get_logger(),
+    "scan_data: C=%.2f, L=%.2f, R=%.2f",
+    scan_data_[CENTER], scan_data_[LEFT], scan_data_[RIGHT]);
     if (scan_data_[CENTER] > check_forward_dist) //정면 최대 거리 값이 임계값 보다 큼
     {
       if (scan_data_[LEFT] < check_side_dist) //왼쪽 최대 거리 값이 좌우 임계값 보다 작음
@@ -239,8 +238,8 @@ void Turtlebot3Drive::update_callback()
     {
       forward_count = 0;
       turtlebot3_state_num = GET_TB3_DIRECTION;
+      RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     }
-    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
 
   case TB3_RIGHT_TURN: //상태 값 2(오른쪽 회전)
