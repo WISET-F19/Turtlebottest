@@ -230,16 +230,19 @@ void Turtlebot3Drive::update_callback()
     break;
 
   case TB3_DRIVE_FORWARD: //상태 값이 1임
-    static int forward_count = 0;
+    // static int forward_count = 0;
     update_cmd_vel(LINEAR_VELOCITY, 0.0); //선 속도 값 업뎃 해주기 (0.3 고정)
-    forward_count++;
+    // forward_count++;
 
-    if (forward_count >= 10)  // 약 0.5초 유지 (루프 주기가 0.05초라면)
-    {
-      forward_count = 0;
-      turtlebot3_state_num = GET_TB3_DIRECTION;
-      RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
-    }
+    // if (forward_count >= 10)  // 약 0.5초 유지 (루프 주기가 0.05초라면)
+    // {
+    //   forward_count = 0;
+    //   turtlebot3_state_num = GET_TB3_DIRECTION;
+    //   RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
+    // }
+
+    turtlebot3_state_num = GET_TB3_DIRECTION;
+    RCLCPP_INFO(this->get_logger(), "현재 상태: %d", turtlebot3_state_num);
     break;
 
   case TB3_RIGHT_TURN: //상태 값 2(오른쪽 회전)
